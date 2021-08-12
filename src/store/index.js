@@ -25,13 +25,13 @@ export default new Vuex.Store({
       console.log(urlApi)
       const posts = await axios.get(urlApi).then((result) => {
         console.log(result.data);
+        return result.data;
       })
-
-      const dataMovies = posts.data.results.map((options) => {
+      
+      const dataMovies = posts.results.map((options) => {
           return {
-              title: options.name,
-              text: options.name,
-              value: options.name,
+              title: options.original_title,
+              
           };
       });
       console.log(dataMovies);
