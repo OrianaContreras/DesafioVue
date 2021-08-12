@@ -14,12 +14,14 @@ export default new Vuex.Store({
       
       state.trendingMovieList = posts
     },
+    
 
   },
   actions: {
 
     displayMovies: async function(context) {
       const urlBaseApi = 'https://api.themoviedb.org/3/' ;
+      const urlBaseApiImg = 'https://image.tmdb.org/t/p/w500' ;
       const apiKey = 'api_key=9a3003aa1aa06eceab7137fe6fd5db8b';
       const urlApi = urlBaseApi + 'trending/all/day?' + apiKey ;
       console.log(urlApi)
@@ -31,7 +33,12 @@ export default new Vuex.Store({
       const dataMovies = posts.results.map((options) => {
           return {
               title: options.original_title,
-              
+              description: options.overview,
+              poster: urlBaseApiImg + options.poster_path,
+              vote: options.vote_average,
+              releaseDate: options.release_date,
+              genre: options.genre_ids
+
           };
       });
       console.log(dataMovies);

@@ -1,18 +1,39 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <h1 class="titleCenter"></h1>
+    <div class="searchBar">
+      <SearchBar/>
+    </div>
+    <div>
+      <Movie :array="trendingMovieList"/>
+    </div>
   </div>
+
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 
+import Movie from '../components/Movie.vue';
+import SearchBar from '../components/SearchBar.vue';
+import { mapState } from "vuex";
 export default {
-  name: "Home",
-  components: {
-    HelloWorld,
-  },
-};
+  components: { Movie, SearchBar },
+  computed:{
+...mapState(["trendingMovieList"])
+
+
+},
+
+}
 </script>
+
+<style>
+.searchBar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: aliceblue;
+  border-radius: 50px;
+}
+</style>
