@@ -21,9 +21,8 @@ export default new Vuex.Store({
 
     displayMovies: async function(context) {
       const urlBaseApi = 'https://api.themoviedb.org/3/' ;
-      const urlBaseApiImg = 'https://image.tmdb.org/t/p/w500' ;
       const apiKey = 'api_key=9a3003aa1aa06eceab7137fe6fd5db8b';
-      const urlApi = urlBaseApi + 'trending/all/day?' + apiKey ;
+      const urlApi = urlBaseApi + 'trending/movie/day?' + apiKey ;
       console.log(urlApi)
       const posts = await axios.get(urlApi).then((result) => {
         console.log(result.data);
@@ -34,7 +33,7 @@ export default new Vuex.Store({
           return {
               title: options.original_title,
               description: options.overview,
-              poster: urlBaseApiImg + options.poster_path,
+              poster: options.poster_path,
               vote: options.vote_average,
               releaseDate: options.release_date,
               genre: options.genre_ids

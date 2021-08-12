@@ -1,8 +1,9 @@
 <template>
     <div class="roll">
-        <div  :items="trendingMovieList" class="element" v-for= "trendingMovieList, index in array" :key="'A'+index">
+        <div :items="trendingMovieList" class="element" v-for= "trendingMovieList, index in array" :key="'A'+index">
+            
             <h1>{{trendingMovieList.title}}</h1>
-            <img src="$trendingMovieList.poster" alt="Poster de la Película">
+            <img class="img" :src="`https://image.tmdb.org/t/p/w500${trendingMovieList.poster}`" alt="Poster de la película `${trendingMovieList.title}`">
             <button>
                 Ver más
             </button>
@@ -43,7 +44,7 @@ mounted() {
 
 <style>
     .element{
-        height: 500px;
+        height: 400px;
         padding: 3%;
         box-shadow: 2px 2px 5px rgb(255, 255, 255);
         border-radius: 10px;
@@ -60,7 +61,10 @@ mounted() {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    
 
-}
+    }
+
+    .img{
+        height: 300px;
+    }
 </style>
