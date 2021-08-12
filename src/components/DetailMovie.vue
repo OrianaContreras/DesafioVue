@@ -1,8 +1,17 @@
 <template>
   <div class="detail">
-    
-    
-    
+    <div :items="trendingMovieList" class="element" v-for= "trendingMovieList, index in array" :key="'A'+index">
+      <img class="img" :src="`https://image.tmdb.org/t/p/w500${trendingMovieList.poster}`" alt="Poster de la película `${trendingMovieList.title}`">
+      <h2>{{trendingMovieList.title}}</h2>
+      <h3>{{trendingMovieList.releaseDate}}</h3>
+      <h2>{{trendingMovieList.genre}}</h2>
+      <p>{{trendingMovieList.description}}</p>
+      
+
+      <button class="buttonDetail">
+          Ver más
+      </button>
+    </div>
   </div>
 </template>
 

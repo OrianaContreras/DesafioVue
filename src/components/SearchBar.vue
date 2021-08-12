@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <form id="searchBar">
+    <div class="itemCenter">
+        <form class="searchBar">
             <input class="searchBar" type="text" placeholder="Busque las películas que desee:
             " id="searchBar">
         </form>
@@ -18,11 +18,19 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100vw;
-        
+        width: 75vw;
     }
 
     input{
-        width: 100%;
+        width: 75vw;
+        padding: 10px;
+        margin: 1rem;
     }
+
+    .itemCenter {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+
 </style>

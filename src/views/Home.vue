@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <h1 class="titleCenter"></h1>
     <div class="searchBar">
       <SearchBar/>
@@ -28,12 +28,5 @@ export default {
 </script>
 
 <style>
-.searchBar{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  color: aliceblue;
-  border-radius: 50px;
-}
+
 </style>

@@ -2,9 +2,9 @@
     <div class="roll">
         <div :items="trendingMovieList" class="element" v-for= "trendingMovieList, index in array" :key="'A'+index">
             
-            <h1>{{trendingMovieList.title}}</h1>
+            <h2>{{trendingMovieList.title}}</h2>
             <img class="img" :src="`https://image.tmdb.org/t/p/w500${trendingMovieList.poster}`" alt="Poster de la película `${trendingMovieList.title}`">
-            <button>
+            <button class="buttonDetail">
                 Ver más
             </button>
         </div>
@@ -67,4 +67,9 @@ mounted() {
     .img{
         height: 300px;
     }
+
+    .buttonDetail{
+        margin-top: 5px;
+    }
+
 </style>
