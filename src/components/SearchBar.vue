@@ -1,14 +1,35 @@
 <template>
     <div class="itemCenter">
-        <form class="searchBar">
-            <input class="searchBar" type="text" placeholder="Busque las películas que desee:
-            " id="searchBar">
+        <form class="searchBar" >
+            <input class="searchBar"   type="text" placeholder="Busque las películas que desee:
+            "  v-model="$store.state.query">
+            <button @click.prevent="searchMovies()"> Buscar</button>
         </form>
     </div>
 </template>
 
 <script>
+import {mapActions, mapState} from "vuex";
 export default {
+
+data(){
+    return{
+        
+    }
+},
+computed:{
+...mapState(["searchBarIsEmpty"]),
+},
+
+methods: {
+...mapActions(["searchMovies"]),
+
+
+
+
+
+
+},
 
 }
 </script>

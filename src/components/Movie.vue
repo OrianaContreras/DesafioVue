@@ -1,9 +1,9 @@
 <template>
     <div class="roll">
-        <div :items="trendingMovieList" class="element" v-for= "trendingMovieList, index in array" :key="'A'+index">
+        <div :items="MovieList" class="element" v-for= "MovieList, index in array" :key="'A'+index">
             
-            <h2>{{trendingMovieList.title}}</h2>
-            <img class="img" :src="`https://image.tmdb.org/t/p/w500${trendingMovieList.poster}`" alt="Poster de la película `${trendingMovieList.title}`">
+            <h2>{{MovieList.title}}</h2>
+            <img class="img" :src="`https://image.tmdb.org/t/p/w500${MovieList.poster}`" alt="Poster de la película `${MovieList.title}`">
             <button class="buttonDetail">
                 Ver más
             </button>
@@ -25,7 +25,7 @@ data(){
 
 },
 computed:{
-...mapState(["trendingMovieList"])
+...mapState(["MovieList"])
 
 
 },

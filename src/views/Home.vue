@@ -5,7 +5,7 @@
       <SearchBar/>
     </div>
     <div>
-      <Movie :array="trendingMovieList"/>
+      <Movie :array="MovieList"/>
     </div>
   </div>
 
@@ -19,7 +19,7 @@ import { mapState } from "vuex";
 export default {
   components: { Movie, SearchBar },
   computed:{
-...mapState(["trendingMovieList"])
+...mapState(["MovieList"])
 
 
 },

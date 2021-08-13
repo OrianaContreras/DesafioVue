@@ -5,14 +5,24 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    trendingMovieList:[]
+    MovieList:[],
+    // urlBaseApi: "https://api.themoviedb.org/3/" ,
+    // apiKey: "api_key=9a3003aa1aa06eceab7137fe6fd5db8b",
+    dataMovies:[],
+    searchBarIsEmpty: true,
+    query: ""
 
   },
   mutations: {
 
     loadMovies(state, posts) {
       
-      state.trendingMovieList = posts
+      state.MovieList = posts;
+    },
+
+    foundMovies(state, posts) {
+      
+      state.MovieList = posts
     },
     
 
@@ -20,16 +30,15 @@ export default new Vuex.Store({
   actions: {
 
     displayMovies: async function(context) {
-      const urlBaseApi = 'https://api.themoviedb.org/3/' ;
-      const apiKey = 'api_key=9a3003aa1aa06eceab7137fe6fd5db8b';
-      const urlApi = urlBaseApi + 'trending/movie/day?' + apiKey ;
-      console.log(urlApi)
+      const urlBaseApi = "https://api.themoviedb.org/3/";
+      const apiKey = "api_key=9a3003aa1aa06eceab7137fe6fd5db8b";
+      const urlApi = urlBaseApi + "trending/movie/day?" + apiKey ;
       const posts = await axios.get(urlApi).then((result) => {
         console.log(result.data);
         return result.data;
       })
       
-      const dataMovies = posts.results.map((options) => {
+      this.dataMovies = posts.results.map((options) => {
           return {
               title: options.original_title,
               description: options.overview,
@@ -37,12 +46,37 @@ export default new Vuex.Store({
               vote: options.vote_average,
               releaseDate: options.release_date,
               genre: options.genre_ids
-
           };
       });
-      console.log(dataMovies);
-      context.commit("loadMovies", dataMovies);
-  }
+      console.log(this.dataMovies);
+      context.commit("loadMovies", this.dataMovies);
   },
+
+    searchMovies: async function() {
+      const urlBaseApi = "https://api.themoviedb.org/3/";
+      const apiKey = "api_key=9a3003aa1aa06eceab7137fe6fd5db8b";
+      const urlApiSearch = urlBaseApi +  "search/movie?"+ apiKey + '&language=es-MX&query='+ this.state.query;
+      console.log(this.state.query)
+      console.log(urlApiSearch)
+
+      if(!this.searchBarIsEmpty ){
+      const posts = await axios.get(urlApiSearch).then((result) => { 
+        return result.data;
+      })
+
+      this.dataMovies = posts.results.map((options) => {
+        return {
+            title: options.original_title,
+            description: options.overview,
+            poster: options.poster_path,
+            vote: options.vote_average,
+            releaseDate: options.release_date,
+            genre: options.genre_ids
+        };
+      });
+    }
+    }
+
+},
   modules: {},
 });
