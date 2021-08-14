@@ -9,7 +9,8 @@ export default new Vuex.Store({
     // urlBaseApi: "https://api.themoviedb.org/3/" ,
     // apiKey: "api_key=9a3003aa1aa06eceab7137fe6fd5db8b",
     dataMovies:[],
-    query: ""
+    query: "",
+    movieSelected: ""
 
   },
   mutations: {
@@ -51,7 +52,7 @@ export default new Vuex.Store({
       context.commit("loadMovies", this.dataMovies);
     },
 
-    searchMovies: async function() {
+    searchMovies: async function(context) {
       const urlBaseApi = "https://api.themoviedb.org/3/";
       const apiKey = "api_key=9a3003aa1aa06eceab7137fe6fd5db8b";
       const urlApiSearch = urlBaseApi +  "search/movie?"+ apiKey + '&language=es-MX&query='+ this.state.query;
@@ -71,7 +72,9 @@ export default new Vuex.Store({
               genre: options.genre_ids
           };
         });
+        context.commit("foundMovies", this.dataMovies);
       }
+      console.log(this.state.MovieList);
     }
 
 },

@@ -3,8 +3,8 @@
         <div :items="MovieList" class="element" v-for= "MovieList, index in array" :key="'A'+index">
             
             <h2>{{MovieList.title}}</h2>
-            <img class="img" :src="`https://image.tmdb.org/t/p/w500${MovieList.poster}`" alt="Poster de la película `${MovieList.title}`">
-            <button class="buttonDetail">
+            <img class="img" :src="`https://image.tmdb.org/t/p/w500${MovieList.poster}`" :alt=" `Poster de la película ${MovieList.title}`">
+            <button class="buttonDetail" >
                 Ver más
             </button>
         </div>
