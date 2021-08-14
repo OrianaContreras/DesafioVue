@@ -1,11 +1,11 @@
 <template>
   <div class="detail">
-    <div :items="MovieList" class="element" v-for= "MovieList, index in array" :key="'A'+index">
-      <img class="img" :src="`https://image.tmdb.org/t/p/w500${MovieList.poster}`" alt="Poster de la película `${MovieList.title}`">
-      <h2>{{MovieList.title}}</h2>
-      <h3>{{MovieList.releaseDate}}</h3>
-      <h2>{{MovieList.genre}}</h2>
-      <p>{{MovieList.description}}</p>
+    <div :items="movieSelected" class="element" v-for= "movieSelected, index in array" :key="'A'+index">
+      <img class="img" :src="`https://image.tmdb.org/t/p/w500${movieSelected.poster}`" alt="Poster de la película `${movieSelected.title}`">
+      <h2>{{movieSelected.title}}</h2>
+      <h3>{{movieSelected.releaseDate}}</h3>
+      <h2>{{movieSelected.genre}}</h2>
+      <p>{{movieSelected.description}}</p>
 
 
       <button class="buttonDetail" id="buttonDetail">
@@ -16,11 +16,24 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "DetailMovie",
+  data(){
+    return{
+
+    }
+  },
+  
+  computed:{
+    ...mapState(["movieSelected"])
+  },
+
   props: {
     
   },
+
 };
 </script>
 

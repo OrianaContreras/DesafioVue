@@ -1,6 +1,6 @@
 <template>
   <div >
-    <h1 class="titleCenter"></h1>
+    <h1 class="titleCenter">MOVIE SEARCH</h1>
     <div class="searchBar">
       <SearchBar/>
     </div>
@@ -28,5 +28,16 @@ export default {
 </script>
 
 <style>
+
+  .searchBar {
+          padding-left: 3%;
+      }
+
+  .titleCenter {
+    font-size: 3em;
+    margin-top: 2%;
+  }
+
+
 
 </style>

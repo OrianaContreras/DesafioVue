@@ -1,9 +1,9 @@
 <template>
     <div class="itemCenter">
         <form class="searchBar" >
-            <input class="searchBar"   type="text" placeholder="Busque las películas que desee:
+            <input class="searchBar"   type="text" placeholder="Buscar:
             "  v-model="$store.state.query">
-            <button @click.prevent="searchMovies()"> Buscar</button>
+            <button  class="buttonSearch" @click.prevent="searchMovies()"> <img class="iconSearch" src="../assets/iconSearchW.png" alt="ícono de lupa color blanco"></button>
         </form>
     </div>
 </template>
@@ -39,12 +39,12 @@ methods: {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 75vw;
+        width: 90vw;
     }
 
     input{
-        width: 75vw;
-        padding: 10px;
+        width: 95vw;
+        padding: 15px;
         margin: 1rem;
     }
 
@@ -53,5 +53,19 @@ methods: {
         justify-content: center;
         align-items: center; 
     }
+
+    .buttonSearch {
+        margin-right: 3%;
+        margin: 1rem;
+        background-color: #61b6e7;
+        border-radius: 5px;
+    }
+
+    .iconSearch {
+        width: 2.6rem;
+        background-color: #61b6e7;
+    }
+
+    
 
 </style>

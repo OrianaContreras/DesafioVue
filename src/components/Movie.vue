@@ -2,9 +2,9 @@
     <div class="roll">
         <div :items="MovieList" class="element" v-for= "MovieList, index in array" :key="'A'+index">
             
-            <h2>{{MovieList.title}}</h2>
+            <h2 class="title" >{{MovieList.title}}</h2>
             <img class="img" :src="`https://image.tmdb.org/t/p/w500${MovieList.poster}`" :alt=" `Poster de la película ${MovieList.title}`">
-            <button class="buttonDetail" >
+            <button :value="`${MovieList.id}`" class="buttonDetail">
                 Ver más
             </button>
         </div>
@@ -35,7 +35,8 @@ methods: {
 },
 
 mounted() {
-    this.displayMovies();
+    this.displayMovies();  
+    
 
 }
 
@@ -45,7 +46,7 @@ mounted() {
 <style>
     .element{
         height: 400px;
-        padding: 3%;
+        padding: 4%;
         box-shadow: 2px 2px 5px rgb(255, 255, 255);
         border-radius: 10px;
         display: flex;
@@ -54,7 +55,7 @@ mounted() {
         flex-direction: column;
         margin: 1rem;
         width: 200px;
-        background-color:  #C4CDC1;
+        background-color:  #61b6e7;
 
     }
     .roll{
@@ -70,6 +71,10 @@ mounted() {
 
     .buttonDetail{
         margin-top: 5px;
+    }
+
+    .title {
+        font-size: 1rem;
     }
 
 </style>

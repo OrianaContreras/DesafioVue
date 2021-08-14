@@ -6,9 +6,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     MovieList:[],
-    // urlBaseApi: "https://api.themoviedb.org/3/" ,
-    // apiKey: "api_key=9a3003aa1aa06eceab7137fe6fd5db8b",
-    dataMovies:[],
     query: "",
     movieSelected: ""
 
@@ -24,8 +21,12 @@ export default new Vuex.Store({
       
       state.MovieList = posts
     },
-    
 
+    movieDetail(state, posts) {
+      
+      state.movieSelected = posts
+    },
+  
   },
   actions: {
 
@@ -38,7 +39,7 @@ export default new Vuex.Store({
         return result.data;
       })
       
-      this.dataMovies = posts.results.map((options) => {
+      this.MovieList = posts.results.map((options) => {
           return {
               title: options.original_title,
               description: options.overview,
@@ -48,8 +49,8 @@ export default new Vuex.Store({
               genre: options.genre_ids
           };
       });
-      console.log(this.dataMovies);
-      context.commit("loadMovies", this.dataMovies);
+      console.log(this.MovieList);
+      context.commit("loadMovies", this.MovieList);
     },
 
     searchMovies: async function(context) {
@@ -62,8 +63,9 @@ export default new Vuex.Store({
           return result.data;
         })
       
-        this.dataMovies = posts.results.map((options) => {
+        this.MovieList = posts.results.map((options) => {
           return {
+              id: options.id,
               title: options.original_title,
               description: options.overview,
               poster: options.poster_path,
@@ -72,10 +74,33 @@ export default new Vuex.Store({
               genre: options.genre_ids
           };
         });
-        context.commit("foundMovies", this.dataMovies);
+        context.commit("foundMovies", this.MovieList);
       }
       console.log(this.state.MovieList);
-    }
+    },
+
+    pushArrayMovie: async function(context) {
+      const urlBaseApi = "https://api.themoviedb.org/3/";
+      const apiKey = "api_key=9a3003aa1aa06eceab7137fe6fd5db8b";
+      const urlApi = urlBaseApi + "movie/" +this.state.MovieList.id + apiKey ;
+      const posts = await axios.get(urlApi).then((result) => {
+        console.log(result.data);
+        return result.data;
+      })
+      
+      this.movieSelected = posts.results.map((options) => {
+          return {
+              title: options.title,
+              description: options.overview,
+              poster: options.poster_path,
+              vote: options.vote_average,
+              releaseDate: options.release_date,
+              genre: options.genres.name
+          };
+      });
+      console.log(this.movieSelected);
+      context.commit("movieDetail", this.movieSelected);
+    },
 
 },
   modules: {},
