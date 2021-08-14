@@ -44,9 +44,11 @@ mounted() {
 </script>
 
 <style>
+
+
     .element{
         height: 400px;
-        padding: 4%;
+        padding: 16px;
         box-shadow: 2px 2px 5px rgb(255, 255, 255);
         border-radius: 10px;
         display: flex;
@@ -56,12 +58,17 @@ mounted() {
         margin: 1rem;
         width: 200px;
         background-color:  #61b6e7;
+        padding-bottom: 5%;
+        padding-top: 2%;
 
     }
-    .roll{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+
+    div.roll{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1200px;
+        margin:0 auto;
 
     }
 
@@ -70,11 +77,15 @@ mounted() {
     }
 
     .buttonDetail{
-        margin-top: 5px;
+        margin-top: 25px;
+        padding: 5%;
+        width: 55%;
+        border-radius: 5px;
     }
 
     .title {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        
     }
 
 </style>
