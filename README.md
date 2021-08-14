@@ -1,5 +1,5 @@
 # desafio-Ecomsur
-El proyecto tiene la capacidad de buscar las películas que el cliente desee desde cualquier dispositivo, 
+El proyecto tiene la capacidad de buscar las películas que el cliente desee desde cualquier dispositivo 
 
 
 ## Project setup
